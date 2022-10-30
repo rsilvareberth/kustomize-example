@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: destaxa-financial
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: destaxa-financial
+  template:
+    metadata:
+      labels:
+        app: destaxa-financial
+    spec:
+      containers:
+      - name: destaxa-financial
+        image: destaxa-financial
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080

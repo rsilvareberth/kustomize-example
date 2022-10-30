@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: destaxa-financial
+  namespace: dev
+  labels:
+    eks.amazonaws.com/fargate-profile: dev 
+    run: destaxa-financial
+spec:
+  selector:
+    app: destaxa-financial
+    eks.amazonaws.com/fargate-profile: dev
+    run: destaxa-financial
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  type: ClusterIP
